@@ -4,7 +4,8 @@
   "description": "chatroom by socket.io",
   "main": "index.js",
   "scripts": {
-    "test": "run"
+    "test": "run",
+    "start": "node node\\ server/index.js"
   },
   "author": "Priyansh",
   "license": "ISC",
