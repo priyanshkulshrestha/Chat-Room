@@ -1,0 +1,14 @@
+{
+  "name": "node-server",
+  "version": "1.0.0",
+  "description": "chatroom by socket.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "run"
+  },
+  "author": "Priyansh",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^4.4.0"
+  }
+}
