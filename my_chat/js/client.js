@@ -5,8 +5,6 @@ const messageInput = document.getElementById('msginput')
 const messageContainer = document.getElementById("chatbox")
 var msgAudio = new Audio("juntos-607.mp3")
 var joinAudio = new Audio("Nokia Sms.mp3")
-// var element = document.getElementById("yourDivID");
-messageContainer.scrollTop = messageContainer.scrollHeight;
 
 const append = (message,position)=>{
     const messageElement = document.createElement("div");
@@ -18,8 +16,7 @@ const append = (message,position)=>{
     if(position == "left")
         msgAudio.play();
     if(position == "joining")
-        joinAudio.play();
-    
+        joinAudio.play();  
 }
 
 form.addEventListener('submit', (e) => {
@@ -28,22 +25,17 @@ form.addEventListener('submit', (e) => {
     append(`you: ${message}`,'right')
     socket.emit('send',message);
     messageInput.value = " ";
-
 })
 
 const uname = prompt("Enter your name to join: ")
-socket.emit("new-user-joined", uname);
-console.log(uname);
 
+socket.emit("new-user-joined", uname);
 socket.on('user-joined', uname => {
-    console.log("append")
     append(`${uname} joined the chat`,'joining')
 })
 socket.on('receive', data => {
-    // console.log("append")
     append(`${data.name} : ${data.message} `,'left')
 })
-
 socket.on('left', uname => {
     append(`${uname} left the chat`, 'joining')
 })
